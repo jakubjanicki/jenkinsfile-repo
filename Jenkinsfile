@@ -20,6 +20,7 @@ pipeline {
 
                 // Run Maven on a Unix agent.
                 // sh "mvn clean spring-boot:build-image"
+                echo "TEST"
                 sh "mvn -Dmaven.test.failure.ignore=true clean verify"
             }
         }
