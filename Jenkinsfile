@@ -9,6 +9,12 @@ pipeline {
 
     stages {
         stage('Build') {
+            when {
+                // Sprawdź, czy ostatni commit nie zaczyna się od '[ci skip]'
+                not {
+                    changeset ".*\\[ci skip\\].*"
+                }
+            }
             steps {
                 // Get some code from a GitHub repository
                 git url: 'https://github.com/jakubjanicki/szkolenie-ci-jenkins-example.git', branch: 'main'
