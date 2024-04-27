@@ -11,9 +11,7 @@ pipeline {
         stage('Build') {
             when {
                 // Sprawdź, czy ostatni commit nie zaczyna się od '[ci skip]'
-                not {
-                    changeset ".*\\[ci skip\\].*"
-                }
+                changeset notStartsWith: "[ci skip]"
             }
             steps {
                 // Get some code from a GitHub repository
